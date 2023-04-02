@@ -1,14 +1,14 @@
-export interface AppointmentProps {
-  custumer: string;
+interface AppointmentsProps {
+  customer: string;
   startsAt: Date;
   endsAt: Date;
 }
 
-export class Appointiment {
-  private props: AppointmentProps;
+export class Appointment {
+  private props: AppointmentsProps;
 
-  get custumer() {
-    return this.props.custumer;
+  get customer() {
+    return this.props.customer;
   }
 
   get startsAt() {
@@ -19,11 +19,15 @@ export class Appointiment {
     return this.props.endsAt;
   }
 
-  constructor(props: AppointmentProps) {
+  constructor(props: AppointmentsProps) {
     const { startsAt, endsAt } = props;
 
+    if (startsAt <= new Date()) {
+      throw new Error("Invalid start date");
+    }
+
     if (endsAt <= startsAt) {
-      throw new Error("Invalid end Date");
+      throw new Error("Invalid end date");
     }
 
     this.props = props;

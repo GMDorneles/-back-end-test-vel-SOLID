@@ -1,21 +1,21 @@
-import { Appointiment } from "../entities/appointment";
+import { Appointment } from "../entities/appointment";
 
 interface CreateAppointmentrequest {
-  custumer: string;
+  customer: string;
   startsAt: Date;
   endsAt: Date;
 }
 
-type CreateAppointmentResponse = Appointiment;
+type CreateAppointmentResponse = Appointment;
 
 export class CreateAppointment {
   async execute({
-    custumer,
+    customer,
     startsAt,
     endsAt,
   }: CreateAppointmentrequest): Promise<CreateAppointmentResponse> {
-    const appointment = new Appointiment({
-      custumer,
+    const appointment = new Appointment({
+      customer,
       startsAt,
       endsAt,
     });

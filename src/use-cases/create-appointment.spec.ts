@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CreateAppointment } from "./create-appointment";
-import { Appointiment } from "../entities/appointment";
+import { Appointment } from "../entities/appointment";
 
 describe("Create Appointment", () => {
   it("should be able to create an appointment", () => {
@@ -9,14 +9,15 @@ describe("Create Appointment", () => {
     const startsAt = new Date();
     const endsAt = new Date();
 
-    endsAt.setDate(endsAt.getDate() + 1);
+    startsAt.setDate(startsAt.getDate() + 1);
+    endsAt.setDate(endsAt.getDate() + 2);
 
     expect(
       sut.execute({
-        custumer: "John Doe",
+        customer: "John Doe",
         startsAt,
         endsAt,
       })
-    ).resolves.toBeInstanceOf(Appointiment);
+    ).resolves.toBeInstanceOf(Appointment);
   });
 });
