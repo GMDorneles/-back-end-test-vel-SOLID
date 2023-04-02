@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CreateAppointment } from "./create-appointment";
+import { Appointiment } from "../entities/appointment";
 
 describe("Create Appointment", () => {
   it("should be able to create an appointment", () => {
@@ -16,6 +17,6 @@ describe("Create Appointment", () => {
         startsAt,
         endsAt,
       })
-    );
+    ).resolves.toBeInstanceOf(Appointiment);
   });
 });
